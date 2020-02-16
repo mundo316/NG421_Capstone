@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PartsComponent implements OnInit {
   public parts: Part[];
-  public newPart: Part = {modelNo:'', partName: '', price: 0, onHand: 0 };
+  public newPart: Part = {id: 0, modelNo:'', partName: '', price: 0, onHand: 0 };
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
 
@@ -18,7 +18,7 @@ export class PartsComponent implements OnInit {
   }
   async save() {
       await this.http.post<Part[]>(this.baseUrl + 'teacher', this.newPart).toPromise();
-      this.newPart = { modelNo: '', partName: '', price: 0, onHand: 0 };
+      this.newPart = { id: 0 , modelNo: '', partName: '', price: null, onHand: null };
       this.parts = await this.http.get<Part[]>(this.baseUrl + 'part').toPromise();
   }
 
@@ -26,6 +26,7 @@ export class PartsComponent implements OnInit {
 }
 
 interface Part {
+  id: number;
   modelNo: string;
   partName: string;
   price: number;

@@ -11,6 +11,7 @@ namespace capstone.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
+        public int id {get; set; }
         public string modelNo { get; set; }
         public string partName { get; set; }
         public double price { get; set; }

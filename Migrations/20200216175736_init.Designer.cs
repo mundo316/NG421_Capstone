@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using capstone.Data;
 
-namespace capstone.Data.Migrations
+namespace capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200204024402_AddedTeachers")]
-    partial class AddedTeachers
+    [Migration("20200216175736_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -296,6 +296,26 @@ namespace capstone.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("capstone.Models.Part", b =>
+                {
+                    b.Property<string>("modelNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("onHand")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("partName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("price")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("modelNo");
+
+                    b.ToTable("Parts");
+                });
+
             modelBuilder.Entity("capstone.Models.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -311,26 +331,6 @@ namespace capstone.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FirstName = "Jon",
-                            LastName = "Smith"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FirstName = "Bobby",
-                            LastName = "Miller"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FirstName = "Sarah",
-                            LastName = "Brooks"
-                        });
                 });
 
             modelBuilder.Entity("capstone.Models.Teacher", b =>
@@ -348,26 +348,6 @@ namespace capstone.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FirstName = "Sam",
-                            LastName = "Smith"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FirstName = "Tom",
-                            LastName = "Miller"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FirstName = "Mary",
-                            LastName = "Brooks"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
