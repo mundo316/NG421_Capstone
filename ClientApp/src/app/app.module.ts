@@ -38,6 +38,7 @@ import { PartsComponent } from './parts/parts.component';
         { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
         { path: 'students', component: StudentsComponent, canActivate: [AuthorizeGuard] },
         { path: 'teachers', component: TeacherComponent, canActivate: [AuthorizeGuard] },
+        { path: 'parts' , component: PartsComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
