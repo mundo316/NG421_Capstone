@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using capstone.Data;
 
 namespace capstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200217171626_RemoveBadParts")]
+    partial class RemoveBadParts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,29 +294,6 @@ namespace capstone.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("capstone.Models.Part", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("modelNo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("onHand")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("partName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("price")
-                        .HasColumnType("REAL");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Parts");
                 });
 
             modelBuilder.Entity("capstone.Models.Student", b =>
