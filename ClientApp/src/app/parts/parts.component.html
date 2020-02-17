@@ -1,8 +1,8 @@
 <h1 id="tableLabel">Parts</h1>
 
-<p *ngIf="!Parts"><em>Loading...</em></p>
+<p *ngIf="!parts"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Parts">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="parts">
   <thead>
     <tr>
       <th>Model No.</th>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let Part of Parts">
+    <tr *ngFor="let Part of parts">
       <td>{{ Part.modelNo }}</td>
       <td>{{ Part.partName }}</td>
       <td>{{ Part.price }}</td>
@@ -27,8 +27,8 @@ Model No.
 Part Name
 <input [(ngModel)]="newPart.partName" name="partName" />
 Price
-<input [(ngModel)]="newPart.price" name="price" />
+<input type="number" [(ngModel)]="newPart.price" name="price" />
 Amount on Hand
-<input [(ngModel)]="newPart.onHand" name="onHand" />
+<input type="number" [(ngModel)]="newPart.onHand" name="onHand" />
 
 <button (click)="save()">Save</button>

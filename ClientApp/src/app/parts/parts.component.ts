@@ -14,12 +14,12 @@ export class PartsComponent implements OnInit {
 
   }
   async ngOnInit() {
-      this.parts = await this.http.get<Part[]>(this.baseUrl + 'part').toPromise();
+      this.parts = await this.http.get<Part[]>(this.baseUrl + 'parts').toPromise();
   }
   async save() {
-      await this.http.post<Part[]>(this.baseUrl + 'teacher', this.newPart).toPromise();
-      this.newPart = { id: 0 , modelNo: '', partName: '', price: null, onHand: null };
-      this.parts = await this.http.get<Part[]>(this.baseUrl + 'part').toPromise();
+    console.log(this.newPart);
+      await this.http.post<Part[]>(this.baseUrl + 'parts', this.newPart).toPromise();
+      this.parts = await this.http.get<Part[]>(this.baseUrl + 'parts').toPromise();
   }
 
 
